@@ -14,9 +14,9 @@ Elenco PDR
   <table class="list.pdrtable">
 
     <tr>
-      <th rowspan="2" class="pdrth">Ultima modifica</th>
       <th rowspan="2" class="pdrth">Nome Proc</th>
       <th rowspan="2" class="pdrth">PdrKey</th>
+      <th rowspan="2" class="pdrth">Descrizione</th>
       <th rowspan="2" class="pdrth">CRM</th>
       <th rowspan="2" class="pdrth">DWH</th>
       <th rowspan="2" class="pdrth">PdrTime</th>
@@ -113,9 +113,9 @@ Elenco PDR
        counter += 1
    %>
     <tr class="<%= (counter % 2) == 0 ? "even" : "odd"%>">
-      <td style="background-color: #FFCC00;white-space:nowrap;"><%= pdr.updated_at.to_formatted_s(:db) %></td>
       <td class="pdrthgold"><%= pdr.mvno_proc.name %></td>
       <td class="pdrthgold"><%= pdr.get_pdr_key %></td>
+      <td class="pdrthgold"><%= pdr.description %></td>
       <td class="pdrthgold"><%= pdr.crm_flag=="1" ? "SI" : "NO" %> </td>
       <td class="pdrthgold"><%= pdr.dwh_flag=="1" ? "SI" : "NO" %> </td>
       <td>PdrTime</td>
