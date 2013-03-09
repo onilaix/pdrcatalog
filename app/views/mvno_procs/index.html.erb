@@ -1,0 +1,41 @@
+<% html_title "PDR Catalog" %>
+
+<%= link_to 'Elenco PDR', pdrs_path(:project_id => session[:project_id]) %>
+| Elenco Processi 
+| <%= link_to 'DWH', dwh_pdrs_path(:project_id => session[:project_id]) %> 
+| <%= link_to 'Storico', log_pdrs_path(:project_id => session[:project_id]) %>
+	
+<h3>Elenco Processi</h3>
+<% if (@mvno_proc_list.size == 0) %>
+  <p>   Elenco Processi vuoto! </p>
+
+<% else %>
+
+<p> <%= link_to "Crea Nuovo Processo", new_mvno_proc_path %> </p>
+<hr/>
+<table class="list" style="width:auto">
+	<tr>
+	<th>PdrType</th>
+	<th>Nome Processo</th>
+	<th>Num.Pdr</th>
+	<th colspan="2">&nbsp;</th>
+	</tr>
+
+<% counter = 0
+   @mvno_proc_list.each do |mvno_proc| 
+   counter += 1
+%>
+	<tr class="<%= (counter % 2) == 0 ? "even" : "odd"%>">
+	<td><%= mvno_proc.pdrtype %></td>
+	<td><%= mvno_proc.name %></td>
+	<td align="right"><%= mvno_proc.pdrs.count %></td>
+	<td><%= link_to 'Modifica', edit_mvno_proc_path(mvno_proc) %></td>
+	<td><%= link_to 'Rimuovi', mvno_proc, :confirm => 'Sei sicuro?',
+	:method => :delete %></td>
+	</tr>
+	<% end %>
+</table>
+<% end %>
+
+<hr/>
+<p> <%= link_to "Crea Nuovo Processo", new_mvno_proc_path %> </p>

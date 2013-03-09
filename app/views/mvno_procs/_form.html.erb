@@ -1,0 +1,31 @@
+<%= form_for(@mvno_proc) do |f| %>
+<div class="box tabular">
+	<div class="all_attributes">
+  <% if @mvno_proc.errors.any? %>
+      <div id="alert">
+        <h2><%= pluralize(@mvno_proc.errors.count, "error") %>
+            prohibited this mvno_proc from being saved:</h2>
+      <ul>
+      <% @mvno_proc.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<p> 
+    <%= f.label :pdrtype %><%= f.text_field :pdrtype %>
+</p>
+<p> 
+    <%= f.label :name %><%= f.text_field :name %>
+</p>
+
+
+<p> 
+    <%= f.submit (@mvno_proc.new_record? ? 'Crea Processo' : 'Salva Modifiche')%>
+</p>
+
+  </div>  
+</div>  
+
+<% end %>

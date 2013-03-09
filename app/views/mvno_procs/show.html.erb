@@ -1,0 +1,44 @@
+
+
+<div>
+<h2>
+Processo:<%= @mvno_proc.pdrtype %>&nbsp; <%= @mvno_proc.name %>
+</h2>
+</div>
+
+<div>
+   <%= link_to 'Torna all\'elenco Processi', mvno_procs_path(:project_id => session[:project_id]) %> |
+   <%= link_to 'Modifica', edit_mvno_proc_path(@mvno_proc) %> |
+<%= link_to 'Rimuovi', @mvno_proc, :confirm => 'Sei sicuro?',
+:method => :delete %>
+</div>
+
+<hr/>
+
+
+<% if  @mvno_proc.pdrs.find_all.count == 0 %>
+<h3> Nessun PDR definito </h3>
+<% else %>
+<h3> Elenco PDR</h3>
+
+ <table class="pdrtable">
+    <tr class="pdrth">
+      <th>Ultima modifica</th>
+      <th>Nome Proc</th>
+      <th>PdrKey</th>
+      <th>Descrizione</th>
+    </tr>
+
+<% counter = 0
+   @mvno_proc.pdrs.find_all do |pdr| 
+     counter += 1 
+%>
+    <tr class="<%= (counter % 2) == 0 ? "even" : "odd" %> ">
+      <td><%= pdr.updated_at.to_formatted_s(:db) %> </td>
+      <td><%= pdr.mvno_proc.name %></td>
+      <td><%= pdr.get_pdr_key %></td>
+      <td><%= pdr.description%></td>      
+    </tr>
+  <% end # pdr loop%>
+</table>
+<% end # if-then-else%>

@@ -1,0 +1,49 @@
+
+<%= form_for [@pdr, @ret_code] do |f| %>
+<div class="box tabular">
+	<div class="all_attributes">
+  <% if @ret_code.errors.any? %>
+      <div id="alert">
+        <h2><%= pluralize(@ret_code.errors.count, "error") %>
+            prohibited this ireturn code from being saved:</h2>
+      <ul>
+      <% @ret_code.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<p>
+   <label>Codice Errore:</label>
+</p>	  
+    <% if RetCode.get_ret_codes_options.count > 0 %> 
+      <p>
+          <label>seleziona un valore</label> 
+          <%= select_tag(:code_sel, options_for_select(RetCode.get_ret_codes_options ,nil), :onchange => raw("document.getElementById('ret_code_code').value=this.options[this.selectedIndex].value")) %>
+          o, in alternativa,
+      </p>
+    <% end %>
+<p>
+	<label>inserisci un nuovo valore</label> <%= f.text_field :code %>
+</p>	  
+<p>
+    <%= f.label :description %>  <%= f.text_area :description %>
+</p>	  
+<p>
+    <%= f.label :cm_description %> <%= f.text_field :cm_description %>
+</p>	  
+<p>
+    <%= f.label :crm_fields %>  <%= f.text_field :crm_fields %>
+</p>	  
+<p>
+    <%= f.label :comment %> <%= f.text_field :comment %>
+</p>	  
+ 
+<p>
+    <%= f.submit (@ret_code.new_record? ? 'Crea' : 'Salva')%>
+</p>
+
+  </div>
+</div>
+<% end %>

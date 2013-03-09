@@ -1,0 +1,177 @@
+Elenco PDR 
+| <%= link_to 'Elenco Processi', mvno_procs_path(:project_id => session[:project_id]) %> 
+| <%= link_to 'DWH', dwh_pdrs_path(:project_id => session[:project_id]) %> 
+| <%= link_to 'Storico', log_pdrs_path(:project_id => session[:project_id]) %>
+
+<h3>Elenco PDR</h3>
+
+<% if (@pdr_list.count == 0) %>
+  <p> Catalogo PDR vuoto! </p>
+<% else %>
+<%= link_to 'Crea PDR', new_pdr_path %>
+<hr/>
+ 
+  <table class="list.pdrtable">
+
+    <tr>
+      <th rowspan="2" class="pdrth">Ultima modifica</th>
+      <th rowspan="2" class="pdrth">Nome Proc</th>
+      <th rowspan="2" class="pdrth">PdrKey</th>
+      <th rowspan="2" class="pdrth">CRM</th>
+      <th rowspan="2" class="pdrth">DWH</th>
+      <th rowspan="2" class="pdrth">PdrTime</th>
+      <th rowspan="2" class="pdrth">ServerID</th>
+      <th class="pdrth">PdrType</th>
+      <th class="pdrth">PdrString1 </th>
+      <th class="pdrth">PdrString2 </th>
+      <th class="pdrth">PdrString3 </th>
+      <th class="pdrth">PdrString4 </th>
+      <th class="pdrth">PdrString5 </th>
+      <th class="pdrth">PdrString6 </th>
+      <th class="pdrth">PdrString7 </th>
+      <th class="pdrth">PdrString8 </th>
+      <th class="pdrth">PdrString9 </th>
+      <th class="pdrth">PdrString10 </th>
+      <th class="pdrth">PdrString11 </th>
+      <th class="pdrth">PdrString12 </th>
+      <th class="pdrth">PdrString13 </th>
+      <th class="pdrth">PdrString14 </th>
+      <th class="pdrth">PdrString15 </th>
+      <th class="pdrth">PdrString16 </th>
+      <th class="pdrth">PdrString17 </th>
+      <th class="pdrth">PdrString18 </th>
+      <th class="pdrth">PdrString19 </th>
+      <th class="pdrth">PdrString20 </th>
+      <th class="pdrth">PdrString21 </th>
+      <th class="pdrth">PdrString22 </th>
+      <th class="pdrth">PdrString23 </th>
+      <th class="pdrth">PdrString24 </th>
+      <th class="pdrth">PdrString25 </th>
+      <th class="pdrth">PdrString26 </th>
+      <th class="pdrth">PdrString27 </th>
+      <th class="pdrth">PdrString28 </th>
+      <th class="pdrth">PdrString29 </th>
+      <th class="pdrth">PdrString30 </th>
+      <th class="pdrth">PdrString31 </th>
+      <th class="pdrth">PdrString32 </th>
+      <th class="pdrth">PdrString33 </th>
+      <th class="pdrth">PdrString34 </th>
+      <th class="pdrth">PdrString35 </th>
+      <th class="pdrth">PdrString36 </th>
+      <th class="pdrth">PdrString37 </th>
+      <th class="pdrth">PdrString38 </th>
+      <th class="pdrth">PdrString39 </th>
+      <th class="pdrth">PdrString40 </th>
+      <th rowspan="2" colspan="3" class="pdrth">&nbsp;</th>
+    </tr>
+    <tr>      
+     
+      <th class="pdrthgold" >ProcessId</th>
+      <th class="pdrthgold">Functional Block </th>
+      <th class="pdrthgold">PdrID</th>
+      <th class="pdrthgold">CustomerID </th>
+      <th class="pdrthgold">SubsbscriberID</th>
+      <th class="pdrthgold">MSISDN</th>
+      <th class="pdrthgold">BusinessID </th>
+      <th class="pdrthgold">Business Result Code </th>
+      <th class="pdrthgold">TSE UUID </th>
+      <th class="pdrthgold">DS Ticket Ref</th>
+      <th class="pdrthgold">TSE Result Code Description </th>
+      <th class="pdrthgold">Notification Result Code </th>
+      <th class="pdrthgold">UserID </th>
+      <th class="pdrthgold">IP Caller </th>
+      <th class="pdrthgold">Channel </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+      <th class="pdrthgold">Pdr specific </th>
+    </tr>
+  <% counter = 0
+     @pdr_list.each do |pdr|
+       counter += 1
+   %>
+    <tr class="<%= (counter % 2) == 0 ? "even" : "odd"%>">
+      <td style="background-color: #FFCC00;white-space:nowrap;"><%= pdr.updated_at.to_formatted_s(:db) %></td>
+      <td class="pdrthgold"><%= pdr.mvno_proc.name %></td>
+      <td class="pdrthgold"><%= pdr.get_pdr_key %></td>
+      <td class="pdrthgold"><%= pdr.crm_flag=="1" ? "SI" : "NO" %> </td>
+      <td class="pdrthgold"><%= pdr.dwh_flag=="1" ? "SI" : "NO" %> </td>
+      <td>PdrTime</td>
+      <td>&nbsp;</td>
+      <td><%= "%02d" % pdr.mvno_proc.pdrtype.to_s %></td>
+      <td><%= pdr.pdrstring1 %> </td>
+      <td><%= pdr.pdrstring2 %> </td>
+      <td><%= pdr.pdrstring3 %> </td>
+      <td><%= pdr.pdrstring4 %> </td>
+      <td><%= pdr.pdrstring5 %> </td>
+      <td><%= pdr.pdrstring6 %> </td>
+      <td><%= simple_format(pdr.get_ret_codes_list) %> </td>
+      <td><%= pdr.pdrstring8 %> </td>
+      <td><%= pdr.pdrstring9 %> </td>
+      <td><%= pdr.pdrstring10 %> </td>
+      <td><%= pdr.pdrstring11 %> </td>
+      <td><%= pdr.pdrstring12 %> </td>
+      <td><%= pdr.pdrstring13 %> </td>
+      <td><%= pdr.pdrstring14 %> </td>
+      <td><%= pdr.pdrstring15 %> </td>
+      <td><%= pdr.pdrstring16 %> </td>
+      <td><%= pdr.pdrstring17 %> </td>
+      <td><%= pdr.pdrstring18 %> </td>
+      <td><%= pdr.pdrstring19 %> </td>
+      <td><%= pdr.pdrstring20 %> </td>
+      <td><%= pdr.pdrstring21 %> </td>
+      <td><%= pdr.pdrstring22 %> </td>
+      <td><%= pdr.pdrstring23 %> </td>
+      <td><%= pdr.pdrstring24 %> </td>
+      <td><%= pdr.pdrstring25 %> </td>
+      <td><%= pdr.pdrstring26 %> </td>
+      <td><%= pdr.pdrstring27 %> </td>
+      <td><%= pdr.pdrstring28 %> </td>
+      <td><%= pdr.pdrstring29 %> </td>
+      <td><%= pdr.pdrstring30 %> </td>
+      <td><%= pdr.pdrstring31 %> </td>
+      <td><%= pdr.pdrstring32 %> </td>
+      <td><%= pdr.pdrstring33 %> </td>
+      <td><%= pdr.pdrstring34 %> </td>
+      <td><%= pdr.pdrstring35 %> </td>
+      <td><%= pdr.pdrstring36 %> </td>
+      <td><%= pdr.pdrstring37 %> </td>
+      <td><%= pdr.pdrstring38 %> </td>
+      <td><%= pdr.pdrstring39 %> </td>
+      <td><%= pdr.pdrstring40 %> </td>
+      <td><%= link_to 'Visualizza', pdr_path(pdr) %> </td>
+      <td><%= link_to "Modifica", edit_pdr_path(pdr) %> </td>
+      <td><%= link_to( 'Rimuovi', [pdr], :confirm => 'Sei sicuro?', :method => :delete ) %> </td>
+    
+     </tr>
+  <% end # loop on pdrs %>
+  </table>
+<% end %>
+<hr/>
+<%= link_to 'Crea PDR', new_pdr_path %>
+
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'pdrcatalog', :plugin => 'pdrcatalog' %>
+<% end %>

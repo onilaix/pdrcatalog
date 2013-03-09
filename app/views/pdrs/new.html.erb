@@ -1,0 +1,10 @@
+
+	<h2>Nuovo PDR</h2>
+
+	<%= render 'form' %>
+
+	<!--%= link_to "Torna a elenco PDR", pdrs_path %-->
+
+	<%= link_to "Torna a elenco PDR", pdrs_path(:project_id =>  session[:project_id]) %>
+
+

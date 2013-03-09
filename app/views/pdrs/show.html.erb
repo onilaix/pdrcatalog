@@ -1,0 +1,90 @@
+
+<%
+ret_codes_list = @pdr.get_ret_codes_list
+%>
+
+<p>
+
+<div id="content">
+
+<hr />
+<p>
+<%= link_to( 'Modifica', edit_pdr_path(@pdr)) %> |
+<%= link_to( 'Rimuovi', [@pdr], :confirm => 'Sei sicuro?', :method => :delete ) %> |
+<%= link_to "Torna a Elenco PDR", pdrs_path(:project_id => session[:project_id]) %>
+
+</p>
+
+<h2>PDR <%= @pdr.new_record? ? "": @pdr.get_pdr_key  %></h2>
+
+
+<%= form_for [@pdr] do |f| %>
+<div class="box tabular">
+	<div class="all_attributes">
+<p><%= f.label :description %> <%= @pdr.description%></p>
+
+<p><%= f.label :crm_flag%>     <%= @pdr.crm_flag ? "Pubblicato su CRM": "Non pubblicato su CRM"%></p>
+<p><%= f.label :dwh_flag%>     <%= @pdr.dwh_flag ? "Esporta a DWH":"Non esportato a DWH"%></p>   
+<p><%= f.label :from_system %> <%= @pdr.from_system %> </p>  
+<p><%= f.label :to_system %>   <%= @pdr.to_system %></p>  
+<p><label>PdrType</label> <%= @pdr.mvno_proc.pdrtype %></p>   
+<p><%= f.label :pdrstring1 %>  <%= @pdr.pdrstring1 %></p>   
+<p><%= f.label :pdrstring2 %>  <%= @pdr.pdrstring2 %></p>   
+<p><%= f.label :pdrstring3 %>  <%= @pdr.pdrstring3 %></p>   
+<p><%= f.label :pdrstring4 %>  <%= @pdr.pdrstring4 %></p>   
+<p><%= f.label :pdrstring5 %>  <%= @pdr.pdrstring5 %></p>   
+<p><%= f.label :pdrstring6 %>  <%= @pdr.pdrstring6 %></p>   
+<p><%= f.label :pdrstring7 %>  <%= ret_codes_list == '' ? "(--no ret code defined --)" : simple_format(ret_codes_list) %>
+<p><label>&nbsp;</label>	<%= link_to('Dettagli/Modifica',pdr_ret_codes_path(@pdr, :project_id =>  session[:project_id])) %></p>   
+<p><%= f.label :pdrstring8 %>  <%= @pdr.pdrstring8 %> </p>   
+<p><%= f.label :pdrstring9 %>  <%= @pdr.pdrstring9 %> </p>   
+<p><%= f.label :pdrstring10 %> <%= @pdr.pdrstring10 %></p>   
+<p><%= f.label :pdrstring11 %> <%= @pdr.pdrstring11 %></p>   
+<p><%= f.label :pdrstring12 %> <%= @pdr.pdrstring12 %></p>   
+<p><%= f.label :pdrstring13 %> <%= @pdr.pdrstring13 %></p>   
+<p><%= f.label :pdrstring14 %> <%= @pdr.pdrstring14 %></p>   
+<p><%= f.label :pdrstring15 %> <%= @pdr.pdrstring15 %></p>   
+<p><%= f.label :pdrstring16 %> <%= @pdr.pdrstring16 %></p>   
+<p><%= f.label :pdrstring17 %> <%= @pdr.pdrstring17 %></p>   
+<p><%= f.label :pdrstring18 %> <%= @pdr.pdrstring18 %></p>   
+<p><%= f.label :pdrstring19 %> <%= @pdr.pdrstring19 %></p>   
+<p><%= f.label :pdrstring20 %> <%= @pdr.pdrstring20 %></p>   
+<p><%= f.label :pdrstring21 %> <%= @pdr.pdrstring21 %></p>   
+<p><%= f.label :pdrstring22 %> <%= @pdr.pdrstring22 %></p>   
+<p><%= f.label :pdrstring23 %> <%= @pdr.pdrstring23 %></p>   
+<p><%= f.label :pdrstring24 %> <%= @pdr.pdrstring24 %></p>   
+<p><%= f.label :pdrstring25 %> <%= @pdr.pdrstring25 %></p>   
+<p><%= f.label :pdrstring26 %> <%= @pdr.pdrstring26 %></p>   
+<p><%= f.label :pdrstring27 %> <%= @pdr.pdrstring27 %></p>   
+<p><%= f.label :pdrstring28 %> <%= @pdr.pdrstring28 %></p>   
+<p><%= f.label :pdrstring29 %> <%= @pdr.pdrstring29 %></p>   
+<p><%= f.label :pdrstring30 %> <%= @pdr.pdrstring30 %></p>   
+<p><%= f.label :pdrstring31 %> <%= @pdr.pdrstring31 %></p>   
+<p><%= f.label :pdrstring32 %> <%= @pdr.pdrstring32 %></p>   
+<p><%= f.label :pdrstring33 %> <%= @pdr.pdrstring33 %></p>   
+<p><%= f.label :pdrstring34 %> <%= @pdr.pdrstring34 %></p>   
+<p><%= f.label :pdrstring35 %> <%= @pdr.pdrstring35 %></p>   
+<p><%= f.label :pdrstring36 %> <%= @pdr.pdrstring36 %></p>   
+<p><%= f.label :pdrstring37 %> <%= @pdr.pdrstring37 %></p>   
+<p><%= f.label :pdrstring38 %> <%= @pdr.pdrstring38 %></p>   
+<p><%= f.label :pdrstring39 %> <%= @pdr.pdrstring39 %></p>   
+<p><%= f.label :pdrstring40 %> <%= @pdr.pdrstring40 %></p>   
+<p><%= f.label :notes %> <%= @pdr.notes %></p>   
+
+  </div>
+</div>
+<% end %>
+
+<p>
+<%= link_to "Modifica", edit_pdr_path(@pdr) %>
+<%= link_to( 'Rimuovi', [@pdr], :confirm => 'Sei sicuro?', :method => :delete ) %>
+</p>
+
+
+<hr/>
+<p>
+<%= link_to "Torna a Elenco PDR", pdrs_path(:project_id => session[:project_id]) %>
+</p>
+
+</div>
+

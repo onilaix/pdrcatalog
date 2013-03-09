@@ -1,0 +1,95 @@
+
+<%= form_for(@pdr) do |f| %>
+<div class="box tabular">
+	<div class="all_attributes">
+  <% if @pdr.errors.any? %>
+      <div id="alert">
+        <h2><%= pluralize(@pdr.errors.count, "error") %>
+            prohibited this pdr from being saved:</h2>
+      <ul>
+      <% @pdr.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="attributes">
+<p>  
+	<%= f.label :description %><%= f.text_field :description %>
+</p>
+<p>
+    <%= label_tag(:crm_flag, "Pubblica su CRM (Storico Operazioni)") %>
+    <%= f.check_box(:crm_flag) %>
+</p>
+<p>
+    <%= label_tag(:dwh_flag, "Esporta a DWH") %>
+    <%= f.check_box(:dwh_flag) %>
+</p>
+<p>
+    <%= f.label :from_system %>
+    <%= f.select(:from_system ,options_for_select(get_system_options, @pdr.from_system)) %>
+</p>
+<p>
+    <%= f.label :to_system %>
+    <%= f.select(:to_system ,options_for_select(get_system_options , @pdr.to_system)) %>
+</p>
+
+
+
+<p><%= f.label "PdrType" %><%= f.select(:mvno_proc_id, options_from_collection_for_select(MvnoProc.order("pdrtype ASC"), :id, :option_text)) %>  
+<p>  <%= f.label :pdrstring1 %><%= f.text_field :pdrstring1 %></p>  
+<p>  <%= f.label :pdrstring2 %><%= f.text_field :pdrstring2 %></p>  
+<p>  <%= f.label :pdrstring3 %><%= f.text_field :pdrstring3 %></p>  
+<p>  <%= f.label :pdrstring4 %><%= f.text_field :pdrstring4 %></p>  
+<p>  <%= f.label :pdrstring5 %><%= f.text_field :pdrstring5 %></p>  
+<p>  <%= f.label :pdrstring6 %><%= f.text_field :pdrstring6 %></p>  
+<p>  <%= f.label :pdrstring7 %>
+<% if @pdr.new_record? %>
+ (definisci i codici di errore dopo avere salvato il record)
+<% else %>
+  <% ret_codes_list = @pdr.get_ret_codes_list %>
+  <%= ret_codes_list == '' ? "(--no ret code defined --)" : simple_format(ret_codes_list) %> <%= link_to('Modifica',pdr_ret_codes_path(@pdr)) %></p>  
+<% end %>
+</p>
+<p>  <%= f.label :pdrstring8 %><%= f.text_field :pdrstring8 %></p>  
+<p>  <%= f.label :pdrstring9 %><%= f.text_field :pdrstring9 %></p>  
+<p>  <%= f.label :pdrstring10 %><%= f.text_field :pdrstring10 %></p>  
+<p>  <%= f.label :pdrstring11 %><%= f.text_field :pdrstring11 %></p>  
+<p>  <%= f.label :pdrstring12 %><%= f.text_field :pdrstring12 %></p>  
+<p>  <%= f.label :pdrstring13 %><%= f.text_field :pdrstring13 %></p>  
+<p>  <%= f.label :pdrstring14 %><%= f.text_field :pdrstring14 %></p>  
+<p>  <%= f.label :pdrstring15 %><%= f.text_field :pdrstring15 %></p>  
+<p>  <%= f.label :pdrstring16 %><%= f.text_field :pdrstring16 %></p>  
+<p>  <%= f.label :pdrstring17 %><%= f.text_field :pdrstring17 %></p>  
+<p>  <%= f.label :pdrstring18 %><%= f.text_field :pdrstring18 %></p>  
+<p>  <%= f.label :pdrstring19 %><%= f.text_field :pdrstring19 %></p>  
+<p>  <%= f.label :pdrstring20 %><%= f.text_field :pdrstring20 %></p>  
+<p>  <%= f.label :pdrstring21 %><%= f.text_field :pdrstring21 %></p>  
+<p>  <%= f.label :pdrstring22 %><%= f.text_field :pdrstring22 %></p>  
+<p>  <%= f.label :pdrstring23 %><%= f.text_field :pdrstring23 %></p>  
+<p>  <%= f.label :pdrstring24 %><%= f.text_field :pdrstring24 %></p>  
+<p>  <%= f.label :pdrstring25 %><%= f.text_field :pdrstring25 %></p>  
+<p>  <%= f.label :pdrstring26 %><%= f.text_field :pdrstring26 %></p>  
+<p>  <%= f.label :pdrstring27 %><%= f.text_field :pdrstring27 %></p>  
+<p>  <%= f.label :pdrstring28 %><%= f.text_field :pdrstring28 %></p>  
+<p>  <%= f.label :pdrstring29 %><%= f.text_field :pdrstring29 %></p>  
+<p>  <%= f.label :pdrstring30 %><%= f.text_field :pdrstring30 %></p>  
+<p>  <%= f.label :pdrstring31 %><%= f.text_field :pdrstring31 %></p>  
+<p>  <%= f.label :pdrstring32 %><%= f.text_field :pdrstring32 %></p>  
+<p>  <%= f.label :pdrstring33 %><%= f.text_field :pdrstring33 %></p>  
+<p>  <%= f.label :pdrstring34 %><%= f.text_field :pdrstring34 %></p>  
+<p>  <%= f.label :pdrstring35 %><%= f.text_field :pdrstring35 %></p>  
+<p>  <%= f.label :pdrstring36 %><%= f.text_field :pdrstring36 %></p>  
+<p>  <%= f.label :pdrstring37 %><%= f.text_field :pdrstring37 %></p>  
+<p>  <%= f.label :pdrstring38 %><%= f.text_field :pdrstring38 %></p>  
+<p>  <%= f.label :pdrstring39 %><%= f.text_field :pdrstring39 %></p>  
+<p>  <%= f.label :pdrstring40 %><%= f.text_field :pdrstring40 %></p>  
+<p>  <%= f.label :notes %><%= f.text_area :notes %></p>  
+  <p> 
+    <%= f.submit (@pdr.new_record? ? 'Crea' : 'Salva')%>
+  </p> 
+    </div><!--attributes -->
+  </div><!-- all_attributes -->
+</div><!-- box-tabular -->
+<% end %>
+

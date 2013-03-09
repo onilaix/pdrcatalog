@@ -1,0 +1,38 @@
+<h3>Codici di Ritorno PDR: <%= @pdr.get_pdr_key %></h3>
+
+<% if  @pdr.ret_codes.find_all.count == 0 %>
+<h4> Nessun Codice di Ritorno definito</h4>
+<% else %>
+<table>
+<tr class="pdrth">
+  <th>Codice Errore</th>
+  <th>Descrizione</th>
+  <th>Descrizione CM</th>
+  <th>Campi aggiuntivi da visualizzare su CRM</th>
+  <th>Commento</th>
+  <th>&nbsp;</th>
+</tr>
+<% counter = 0
+   @pdr.ret_codes.find_all do |rc|
+     counter +=1
+ %>
+<tr class="<%= (counter % 2) == 0 ? "even" : "odd"%>">
+  <td><%= rc.code %></td>
+  <td><%= rc.description %></td>
+  <td><%= rc.cm_description %></td>
+  <td><%= rc.crm_fields %></td>
+  <td><%= rc.comment %></td>
+  <td><%= link_to( 'Modifica', edit_pdr_ret_code_path(@pdr, rc)) \
++ "|"+ link_to( 'Rimuovi', [@pdr, rc], :confirm => 'Sei sicuro?', \
+:method => :delete )
+%></td>
+</tr>
+<% end # loop %>
+</table>
+<% end # if-then-else %>
+<p>
+<%= link_to( 'Aggiungi Codice di Ritorno', new_pdr_ret_code_path(@pdr))  %>
+</p>
+<br>
+<hr/>
+<%= link_to( 'Torna al PDR', pdr_path(@pdr) )%>
