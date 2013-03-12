@@ -14,6 +14,7 @@ Elenco PDR
   <table class="list.pdrtable">
 
     <tr>
+      <th rowspan="2" colspan="3" class="pdrth">&nbsp;</th>    
       <th rowspan="2" class="pdrth">Processo</th>
       <th rowspan="2" class="pdrth">PdrKey</th>
       <th rowspan="2" class="pdrth">Descrizione</th>
@@ -113,6 +114,9 @@ Elenco PDR
        counter += 1
    %>
     <tr class="<%= (counter % 2) == 0 ? "even" : "odd"%>">
+      <td><%= link_to 'Visualizza', pdr_path(pdr) %> </td>
+      <td><%= link_to "Modifica", edit_pdr_path(pdr) %> </td>
+      <td><%= link_to( 'Rimuovi', [pdr], :confirm => 'Sei sicuro?', :method => :delete ) %> </td>
       <td class="pdrthgold"><%= pdr.mvno_proc.name %></td>
       <td class="pdrthgold"><%= pdr.get_pdr_key %></td>
       <td class="pdrthgold"><%= pdr.description %></td>
