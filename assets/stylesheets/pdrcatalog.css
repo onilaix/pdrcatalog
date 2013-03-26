@@ -1,11 +1,88 @@
-.pdrtable {width: auto; 
-	border-collapse: separate; 
-	border-spacing: 2px; 
-	border-color: grey;}
+.wrapperGlobal{
+	position: relative;
+}
+
+.wrapperTable{
+	position: absolute;
+	height: 90%;
+}
+
+.wrapperHeader{
+	height: 40px;
+	background-color: #628DB6;
+}
+
+.wrapperHeaderGold{
+	background-color: #FFCC00;
+	height: 40px;
+}
+
+.wrapperData{
+	height: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.wrapperHeader .header{
+	position: absolute;
+}
+
+.pdrtr .pdrthgold{
+	background-color: white;
+}
+
+.pdrth .header{
+	color: #F8F8F8;
+	border-left: 2px solid white;
+	line-height: 40px;
+	position: absolute;
+	text-align: left;
+	text-indent: 5px;
+	top: 0;
+	margin-left: -3px;
+	padding-bottom: 80px;
+}
+
+.pdrth .pdrthgold{
+	background-color: white;
+}
+
+.pdrthgold{
+	background-color: #FFCC00;
+	text-align: left;
+	text-indent: 5px;
+	top: 0;
+	min-width: 250px;
+}
+
+.pdrthgold .header{
+	background-color: #FFCC00;
+	border-left: 2px solid white;
+	line-height: 40px;
+	text-align: left;
+	text-indent: 5px;
+	top: 0;
+	position: absolute;
+	margin-top: 40px;
+	margin-left: -3px;
+}
+
+.pdrtbgold{
+	background-color: #FFCC00;
+	min-width: 40px;
+	text-indent: 5px;
+}
+
+.pdrthgolds{
+	background-color: #FFCC00;
+}
+
+.table{
+	padding-bottom: 100px;
+	width: 100%;
+	margin-top: -8px;
+	padding-right: 20px;
+}
 
 .pdrth {background-color: #628DB6; 
-	color: #f8f8f8;}
-
-
-.pdrthgold {background-color: #FFCC00;}
-
+		color: #f8f8f8;}
