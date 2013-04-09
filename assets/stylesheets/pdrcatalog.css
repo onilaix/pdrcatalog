@@ -1,7 +1,3 @@
-.wrapperGlobal{
-	position: relative;
-}
-
 .wrapperTable{
 	position: absolute;
 	height: 90%;
@@ -12,6 +8,23 @@
 	background-color: #628DB6;
 }
 
+.simpleWrapperHeader{
+	height: 15px;
+	background-color: #628DB6;
+}
+
+.pdrth .simpleheader{
+	color: #F8F8F8;
+	border-left: 2px solid white;
+	line-height: 15px;
+	position: absolute;
+	text-align: left;
+	text-indent: 5px;
+	top: 0;
+	margin-left: -3px;
+	min-width: 40px;
+	
+}
 .wrapperHeaderGold{
 	background-color: #FFCC00;
 	height: 40px;
@@ -86,3 +99,10 @@
 
 .pdrth {background-color: #628DB6; 
 		color: #f8f8f8;}
+
+
+table.table td {min-width: 100px;
+    }
+
+table.table tr:hover td{ background-color:#D8D8D8; }
+

@@ -7,39 +7,42 @@
 <% if (@pdr_list.count == 0) %>
   <p> Catalogo PDR vuoto! </p>
 <% else %>
-   <table class="list.pdrtable">
+<div class="wrapperTable">
+<div class="simpleWrapperHeader"></div>
+ <div class = "wrapperData">
+   <table class="table">
     <tr>
-      <th class="pdrth">PdrKey</th>
-      <th class="pdrth">Descrizione</th>
-      <th class="pdrth">PdrType</th>
-      <th class="pdrth">KeyId</th>
-      <th class="pdrth">TimeStp</th>
-      <th class="pdrth">CustomerId</th>
-      <th class="pdrth">SubscriberID</th>
-      <th class="pdrth">MSISDN</th>
-      <th class="pdrth">BusinessId</th>
-      <th class="pdrth">BusinessResultCode</th>
-      <th class="pdrth">TSEUUI</th>
-      <th class="pdrth">PdrString11 </th>
-      <th class="pdrth">PdrString12 </th>
-      <th class="pdrth">PdrString13 </th>
-      <th class="pdrth">PdrString14 </th>
-      <th class="pdrth">PdrString15 </th>
-      <th class="pdrth">PdrString16 </th>
-      <th class="pdrth">PdrString17 </th>
-      <th class="pdrth">PdrString18 </th>
-      <th class="pdrth">PdrString19 </th>
-      <th class="pdrth">PdrString20 </th>
-      <th class="pdrth">PdrString21 </th>
-      <th class="pdrth">PdrString22 </th>
-      <th class="pdrth">PdrString23 </th>
-      <th class="pdrth">PdrString24 </th>
-      <th class="pdrth">PdrString25 </th>
-      <th class="pdrth">PdrString26 </th>
-      <th class="pdrth">PdrString27 </th>
-      <th class="pdrth">PdrString28 </th>
-      <th class="pdrth">PdrString29 </th>
-      <th class="pdrth">PdrString30 </th>
+      <th class="pdrth"><div class="simpleheader">PdrKey</div></th>
+      <th class="pdrth"><div class="simpleheader">Descrizione</div></th>
+      <th class="pdrth"><div class="simpleheader">PdrType</div></th>
+      <th class="pdrth"><div class="simpleheader">KeyId</div></th>
+      <th class="pdrth"><div class="simpleheader">TimeStp</div></th>
+      <th class="pdrth"><div class="simpleheader">CustomerId</div></th>
+      <th class="pdrth"><div class="simpleheader">SubscriberID</div></th>
+      <th class="pdrth"><div class="simpleheader">MSISDN</div></th>
+      <th class="pdrth"><div class="simpleheader">BusinessId</div></th>
+      <th class="pdrth"><div class="simpleheader">BusinessResultCode</div></th>
+      <th class="pdrth"><div class="simpleheader">TSEUUI</div></th>
+      <th class="pdrth"><div class="simpleheader">PdrString11 </div></th>
+      <th class="pdrth"><div class="simpleheader">PdrString12 </div></th>
+      <th class="pdrth"><div class="simpleheader">PdrString13 </div></th>
+      <th class="pdrth"><div class="simpleheader">PdrString14 </div></th>
+      <th class="pdrth"><div class="simpleheader">PdrString15 </div></th>
+      <th class="pdrth"><div class="simpleheader">PdrString16 </div></th>
+      <th class="pdrth"><div class="simpleheader">PdrString17 </div></th>
+      <th class="pdrth"><div class="simpleheader">PdrString18 </div></th>
+      <th class="pdrth"><div class="simpleheader">PdrString19 </div></th>
+      <th class="pdrth"><div class="simpleheader">PdrString20 </div></th>
+      <th class="pdrth"><div class="simpleheader">PdrString21 </div></th>
+      <th class="pdrth"><div class="simpleheader">PdrString22 </div></th>
+      <th class="pdrth"><div class="simpleheader">PdrString23 </div></th>
+      <th class="pdrth"><div class="simpleheader">PdrString24 </div></th>
+      <th class="pdrth"><div class="simpleheader">PdrString25 </div></th>
+      <th class="pdrth"><div class="simpleheader">PdrString26 </div></th>
+      <th class="pdrth"><div class="simpleheader">PdrString27 </div></th>
+      <th class="pdrth"><div class="simpleheader">PdrString28 </div></th>
+      <th class="pdrth"><div class="simpleheader">PdrString29 </div></th>
+      <th class="pdrth"><div class="simpleheader">PdrString30 </div></th>
     </tr>
   <% counter = 0
      @pdr_list.each do |pdr|
@@ -81,6 +84,8 @@
      </tr>
   <% end # loop on pdrs %>
   </table>
+</div>  <!-- end of wrapperData -->
+</div>  <!-- end of wrapperTable --> 
 <% end %>
 
 
