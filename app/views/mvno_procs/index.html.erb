@@ -1,9 +1,5 @@
-<% html_title "PDR Catalog" %>
 
-<%= link_to 'Elenco PDR', pdrs_path(:project_id => session[:project_id]) %>
-| Elenco Processi 
-| <%= link_to 'DWH', dwh_pdrs_path(:project_id => session[:project_id]) %> 
-| <%= link_to 'Storico', log_pdrs_path(:project_id => session[:project_id]) %>
+<%= render 'shared/links' %> 
 	
 <h3>Elenco Processi</h3>
 <% if (@mvno_proc_list.size == 0) %>

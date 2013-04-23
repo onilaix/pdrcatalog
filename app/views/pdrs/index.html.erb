@@ -1,9 +1,16 @@
-Elenco PDR 
-| <%= link_to 'Elenco Processi', mvno_procs_path(:project_id => session[:project_id]) %> 
-| <%= link_to 'DWH', dwh_pdrs_path(:project_id => session[:project_id]) %> 
-| <%= link_to 'Storico', log_pdrs_path(:project_id => session[:project_id]) %>
+
+<%= render 'shared/links' %> 
 
 <h3>Elenco PDR</h3>
+
+<div>
+<%= form_tag({:controller => "pdrs", :action => "search"}, :method => "get") do %>
+  <%= label_tag(:filter, "Filtro per PdrType:") %>
+  <%= select_tag(:filter, options_from_collection_for_select(MvnoProc.order("pdrtype ASC"), :id, :option_text, session[:filter])) %>  
+  <%= submit_tag("Filtra") %>
+  <%= submit_tag("Reset") %>
+<% end %>
+</div>
 
 <% if (@pdr_list.count == 0) %>
   <p> Catalogo PDR vuoto! </p>

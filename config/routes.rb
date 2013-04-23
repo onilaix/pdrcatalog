@@ -17,13 +17,25 @@ get "mvno_procs/index"
 #get "pdrcatalog" => "mvno_procs#index"
 get "mvno_procs" => "mvno_procs#index"
 get "pdrs" => "pdrs#index"
+get "dwh" => "dwh#index"
+get "log" => "log#index"
 
 
 resources :mvno_procs
 
 resources :pdrs do
   resources :ret_codes
-  get 'log', :on => :collection
-  get 'dwh', :on => :collection
+  get 'search', :on => :collection
+  # get 'dwh', :on => :collection
 end
+
+resources :dwh
+resources :log
+
+
+
+
+
+
+
 

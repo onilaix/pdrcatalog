@@ -1,0 +1,8 @@
+
+<div>
+  <%= if params[:controller] == "pdrs"        then "Elenco PDR"      else link_to 'Elenco PDR', pdrs_path(:project_id => session[:project_id])           end %>
+| <%= if params[:controller] == "mvno_procs" then "Elenco Processi" else link_to 'Elenco Processi', mvno_procs_path(:project_id => session[:project_id]) end %> 
+| <%= if params[:controller] == "dwh"        then "DWH"             else link_to 'DWH', dwh_path(:project_id => session[:project_id])                    end %> 
+| <%= if params[:controller] == "log"        then "Storico"         else link_to 'Storico', log_path(:project_id => session[:project_id])                end %>
+</div>
+<p></p>

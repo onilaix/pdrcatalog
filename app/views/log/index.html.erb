@@ -1,0 +1,136 @@
+
+
+<%= render 'shared/links' %> 
+
+<h3>Storico Modifiche PDR</h3>
+
+<% if (@pdr_log_list.size == 0) %>
+  <p>   Elenco Storico PDR vuoto! </p>
+
+<% else %>
+<div class="wrapperTable">
+<div class="simpleWrapperHeader"></div>
+ <div class = "wrapperData">
+   <table class="table">
+   <thead>
+	<tr>
+	 <th class="pdrth"><div class = "simpleheader">PdrKey</div></th>
+	 <th class="pdrth"><div class = "simpleheader">Azione</div></th>
+	 <th class="pdrth"><div class = "simpleheader">Data/Ora</div></th>
+	 <th class="pdrth"><div class = "simpleheader">Utente</div></th>
+	 <th class="pdrth"><div class = "simpleheader">Nome Processo</div></th>
+	 <th class="pdrth"><div class = "simpleheader">Descrizione PDR</div></th>
+         <th class="pdrth"><div class = "simpleheader">CRM</div></th>
+         <th class="pdrth"><div class = "simpleheader">DWH</div></th>	 
+	 <th class="pdrth"><div class = "simpleheader">PdrType</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString1</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString2</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString3</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString4</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString5</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString6</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString7</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString8</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString9</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString10</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString11</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString12</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString13</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString14</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString15</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString16</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString17</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString18</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString19</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString20</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString21</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString22</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString23</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString24</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString25</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString26</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString27</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString28</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString29</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString30</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString31</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString32</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString33</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString34</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString35</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString36</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString37</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString38</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString39</div></th>
+	 <th class="pdrth"><div class = "simpleheader">PdrString40</div></th>
+	 <th class="pdrth"><div class = "simpleheader">Notes</div></th>
+	</tr>
+</thead>
+<tbody>
+<% counter = 0
+   @pdr_log_list.each do |pdr_log| 
+   counter += 1
+%>
+	<tr class="<%= (counter % 2) == 0 ? "even" : "odd"%>">
+	<td><%= pdr_log.get_pdr_key %></td>
+	<td><%= pdr_log.action %></td>
+	<td style="white-space:nowrap;"><%= pdr_log.created_at.to_formatted_s(:db) %></td>
+	<td><%= pdr_log.username %></td>
+	<td><%= pdr_log.name %></td>
+	<td><%= pdr_log.description %></td>
+    <td><%= pdr_log.crm_flag=="1" ? "SI" : "NO" %> </td>
+    <td><%= pdr_log.dwh_flag=="1" ? "SI" : "NO" %> </td>	
+	<td><%= pdr_log.pdrtype %></td>
+	<td><%= pdr_log.pdrstring1 %></td>
+	<td><%= pdr_log.pdrstring2 %></td>
+	<td><%= pdr_log.pdrstring3 %></td>
+	<td><%= pdr_log.pdrstring4 %></td>
+	<td><%= pdr_log.pdrstring5 %></td>
+	<td><%= pdr_log.pdrstring6 %></td>
+	<td><%= simple_format(pdr_log.pdrstring7) %></td>
+	<td><%= pdr_log.pdrstring8 %></td>
+	<td><%= pdr_log.pdrstring9 %></td>
+	<td><%= pdr_log.pdrstring10 %></td>
+	<td><%= pdr_log.pdrstring11 %></td>
+	<td><%= pdr_log.pdrstring12 %></td>
+	<td><%= pdr_log.pdrstring13 %></td>
+	<td><%= pdr_log.pdrstring14 %></td>
+	<td><%= pdr_log.pdrstring15 %></td>
+	<td><%= pdr_log.pdrstring16 %></td>
+	<td><%= pdr_log.pdrstring17 %></td>
+	<td><%= pdr_log.pdrstring18 %></td>
+	<td><%= pdr_log.pdrstring19 %></td>
+	<td><%= pdr_log.pdrstring20 %></td>
+	<td><%= pdr_log.pdrstring21 %></td>
+	<td><%= pdr_log.pdrstring22 %></td>
+	<td><%= pdr_log.pdrstring23 %></td>
+	<td><%= pdr_log.pdrstring24 %></td>
+	<td><%= pdr_log.pdrstring25 %></td>
+	<td><%= pdr_log.pdrstring26 %></td>
+	<td><%= pdr_log.pdrstring27 %></td>
+	<td><%= pdr_log.pdrstring28 %></td>
+	<td><%= pdr_log.pdrstring29 %></td>
+	<td><%= pdr_log.pdrstring30 %></td>
+	<td><%= pdr_log.pdrstring31 %></td>
+	<td><%= pdr_log.pdrstring32 %></td>
+	<td><%= pdr_log.pdrstring33 %></td>
+	<td><%= pdr_log.pdrstring34 %></td>
+	<td><%= pdr_log.pdrstring35 %></td>
+	<td><%= pdr_log.pdrstring36 %></td>
+	<td><%= pdr_log.pdrstring37 %></td>
+	<td><%= pdr_log.pdrstring38 %></td>
+	<td><%= pdr_log.pdrstring39 %></td>
+	<td><%= pdr_log.pdrstring40 %></td>
+	<td><%= pdr_log.notes %></td>
+	</tr>
+	<% end %>
+</tbody>
+</table>
+</div>
+</div>
+<% end %>
+
+<hr/>
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'pdrcatalog', :plugin => 'pdrcatalog' %>
+<% end %>

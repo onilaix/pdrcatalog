@@ -3,9 +3,7 @@ class PdrsController < ApplicationController
   before_filter :find_project, :authorize
   before_filter :find_pdr, :only => [:show, :edit, :update, :destroy]
   def index
-    @pdr_list = Pdr.find(:all,
-        :joins => :mvno_proc,
-        :order => "mvno_procs.pdrtype, pdrstring1, pdrstring2" )
+    set_pdr_list("all")
   end
 
   def new
@@ -62,19 +60,24 @@ class PdrsController < ApplicationController
     end
   end
 
-  def log
-    @pdr_log_list = PdrLog.order("pdrtype, pdrstring1, pdrstring2, created_at")
+  def search
+    begin
+      MvnoProc.find(params[:filter])  # check if input filter exists
+      if params[:commit] == "Reset"
+        set_pdr_list("all")
+      else
+        set_pdr_list(params[:filter])
+
+      end
+      render :action => "index"
+    rescue ActiveRecord::RecordNotFound
+      set_pdr_list
+      flash[:alert] = "Errore: filtro non applicabile"
+      render :action => "index"
+    end
   end
 
-  def dwh
-    @pdr_list = Pdr.find(:all,
-        :joins => :mvno_proc,
-                          :having => "dwh_flag =1",
-              :order => "mvno_procs.pdrtype, pdrstring1, pdrstring2" )
-  #@pdr_list = Pdr.all
-  end
-
-private
+  private
 
   def find_project
     session[:project_id] ||= params[:project_id]
@@ -83,6 +86,16 @@ private
 
   def find_pdr
     @pdr = Pdr.find(params[:id])
+  end
+
+  def set_pdr_list(filter)
+    if filter == "all"
+      @pdr_list = Pdr.find(:all,
+        :joins => :mvno_proc,
+        :order => "mvno_procs.pdrtype, pdrstring1, pdrstring2" )
+    else
+      @pdr_list = Pdr.joins(:mvno_proc).where("mvno_procs.pdrtype = #{filter}").order("pdrstring1 ASC, pdrstring2 ASC")
+    end
   end
 
 end

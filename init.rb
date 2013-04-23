@@ -9,8 +9,10 @@ Redmine::Plugin.register :pdrcatalog do
   #permission :pdrcatalog, { :mvno_procs => [:index, :new] }, :public => false
   project_module :pdrcatalog do
     permission :mvno_procs, {:mvno_procs => [:index, :new, :create, :update, :edit, :destroy]}, :require => :loggedin
-    permission :pdrs, {:pdrs => [:index, :new, :create,:show, :update, :edit, :destroy, :dwh, :log]}, :require => :loggedin
-    permission :ret_codes, {:ret_codes => [:index, :new, :create,:show, :update, :edit, :destroy, :dwh, :log]}, :require => :loggedin
+    permission :pdrs, {:pdrs => [:index, :new, :create,:show, :update, :edit, :destroy, :search]}, :require => :loggedin
+    permission :ret_codes, {:ret_codes => [:index, :new, :create,:show, :update, :edit, :destroy ]}, :require => :loggedin
+    permission :dwh, {:dwh => [:index]}, :require => :loggedin
+    permission :log, {:log => [:index]}, :require => :loggedin
 
 #    permission :proc_index, :mvno_procs => :index
 #    permission :proc_new, :mvno_procs => :new
