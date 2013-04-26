@@ -61,20 +61,21 @@ class PdrsController < ApplicationController
   end
 
   def search
-    begin
-      MvnoProc.find(params[:filter])  # check if input filter exists
-      if params[:commit] == "Reset"
-        set_pdr_list("all")
-      else
+    logger.debug "INPUT FILTER IS #{params[:filter]}"
+ 
+    if params[:commit] == "Reset" or params[:filter] == ""
+      set_pdr_list("all")
+      params[:filter] = nil
+    else
+      begin
+        MvnoProc.find(params[:filter])  # check if input filter exists
         set_pdr_list(params[:filter])
-
+        rescue ActiveRecord::RecordNotFound
+        set_pdr_list("all")
+        flash[:alert] = "Per applicare un filtro, seleziona un PdrType"
       end
-      render :action => "index"
-    rescue ActiveRecord::RecordNotFound
-      set_pdr_list
-      flash[:alert] = "Errore: filtro non applicabile"
-      render :action => "index"
     end
+     render :action => "index"
   end
 
   private
@@ -94,7 +95,7 @@ class PdrsController < ApplicationController
         :joins => :mvno_proc,
         :order => "mvno_procs.pdrtype, pdrstring1, pdrstring2" )
     else
-      @pdr_list = Pdr.joins(:mvno_proc).where("mvno_procs.pdrtype = #{filter}").order("pdrstring1 ASC, pdrstring2 ASC")
+      @pdr_list = Pdr.joins(:mvno_proc).where("mvno_procs.id = #{filter}").order("pdrstring1 ASC, pdrstring2 ASC")
     end
   end
 

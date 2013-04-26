@@ -1,8 +1,18 @@
-
 <div>
-  <%= if params[:controller] == "pdrs"        then "Elenco PDR"      else link_to 'Elenco PDR', pdrs_path(:project_id => session[:project_id])           end %>
-| <%= if params[:controller] == "mvno_procs" then "Elenco Processi" else link_to 'Elenco Processi', mvno_procs_path(:project_id => session[:project_id]) end %> 
-| <%= if params[:controller] == "dwh"        then "DWH"             else link_to 'DWH', dwh_path(:project_id => session[:project_id])                    end %> 
-| <%= if params[:controller] == "log"        then "Storico"         else link_to 'Storico', log_path(:project_id => session[:project_id])                end %>
+	<%= if params[:controller] == "pdrs"        then "Elenco PDR"      else link_to 'Elenco PDR', pdrs_path(:project_id => session[:project_id])           end %>
+	| <%= if params[:controller] == "mvno_procs" then "Elenco Processi" else link_to 'Elenco Processi', mvno_procs_path(:project_id => session[:project_id]) end %>
+	| <%= if params[:controller] == "dwh"        then "DWH"             else link_to 'DWH', dwh_path(:project_id => session[:project_id])                    end %>
+	| <%= if params[:controller] == "log"        then "Storico"         else link_to 'Storico', log_path(:project_id => session[:project_id])                end %>
 </div>
 <p></p>
+
+<div>
+	<% if params[:controller] != "mvno_procs" %>
+    	<%= form_tag({:controller => params[:controller], :action => "search"}, :method => "get") do %>
+	       <%= label_tag(:filter, "Filtro per PdrType:") %>
+	       <%= select_tag(:filter, options_from_collection_for_select(MvnoProc.order("pdrtype ASC"), :id, :option_text, params[:filter]),{:prompt => 'Seleziona un PdrType'}) %>
+	       <%= submit_tag("Filtra") %>
+	       <%= submit_tag("Reset") %>
+	    <% end %>
+	<% end %>
+</div>
