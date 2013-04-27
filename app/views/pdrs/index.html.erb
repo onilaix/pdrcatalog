@@ -14,6 +14,9 @@
 	<table class="table" cellspacing="2">
 		<thead>
  		<tr class="pdrtr">
+ 			<th class="pdrth" colspan="3">
+ 				<div class = "header"></div>
+ 			</th>
  			<th class="pdrth">
  				<div class = "header">Processo</div>
  			</th>
@@ -118,6 +121,10 @@
   </th>
  			</tr>
  			<tr class="pdrtr">
+  			<th class="pdrth" colspan="3">
+ 				<div class = "header"></div>
+ 			</th>
+				
  			<th class="pdrthgolds">	<div class = "header"> </div>
  </th>
  			<th class="pdrthgolds">	<div class = "header"> </div>
@@ -223,6 +230,10 @@
        counter += 1
    %>
     <tr class="<%= (counter % 2) == 0 ? "even" : "odd"%>">
+      <td style="max-width: 20px"><%= link_to image_tag("document.png", :alt =>  "vedi dettaglio"), pdr_path(pdr) %> </td>
+      <td style="max-width: 20px"><%= link_to image_tag("edit.png", :alt =>  "modifica"), edit_pdr_path(pdr) %> </td>
+      <td style="max-width: 20px"><%= link_to( image_tag("delete.png", :alt =>  "rimuovi"), [pdr], :confirm => 'Sei sicuro?', :method => :delete ) %> </td>
+ 
       <td class="pdrtbgold"><%= pdr.mvno_proc.name %></td>
       <td class="pdrtbgold"><%= pdr.get_pdr_key %></td>
       <td class="pdrtbgold"><%= pdr.description %></td>
@@ -271,9 +282,9 @@
       <td><%= pdr.pdrstring38 %> </td>
       <td><%= pdr.pdrstring39 %> </td>
       <td><%= pdr.pdrstring40 %> </td>
-      <td><%= link_to 'Visualizza', pdr_path(pdr) %> </td>
-      <td><%= link_to "Modifica", edit_pdr_path(pdr) %> </td>
-      <td><%= link_to( 'Rimuovi', [pdr], :confirm => 'Sei sicuro?', :method => :delete ) %> </td>
+      <td style="max-width: 20px"><%= link_to image_tag("document.png", :alt =>  "vedi dettaglio"), pdr_path(pdr) %> </td>
+      <td style="max-width: 20px"><%= link_to image_tag("edit.png", :alt =>  "modifica"), edit_pdr_path(pdr) %> </td>
+      <td style="max-width: 20px"><%= link_to( image_tag("delete.png", :alt =>  "rimuovi"), [pdr], :confirm => 'Sei sicuro?', :method => :delete ) %> </td>
     
      </tr>
   <% end # loop on pdrs %>
