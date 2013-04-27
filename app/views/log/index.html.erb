@@ -1,8 +1,5 @@
 
-
 <%= render 'shared/links' %> 
-
-<h3>Storico Modifiche PDR</h3>
 
 <% if (@pdr_log_list.size == 0) %>
   <p>   Elenco Storico PDR vuoto! </p>
@@ -18,10 +15,11 @@
 	 <th class="pdrth"><div class = "simpleheader">Azione</div></th>
 	 <th class="pdrth"><div class = "simpleheader">Data/Ora</div></th>
 	 <th class="pdrth"><div class = "simpleheader">Utente</div></th>
+     <th class="pdrth"><div class = "simpleheader">Note</div></th>
 	 <th class="pdrth"><div class = "simpleheader">Nome Processo</div></th>
 	 <th class="pdrth"><div class = "simpleheader">Descrizione PDR</div></th>
-         <th class="pdrth"><div class = "simpleheader">CRM</div></th>
-         <th class="pdrth"><div class = "simpleheader">DWH</div></th>	 
+     <th class="pdrth"><div class = "simpleheader">CRM</div></th>
+     <th class="pdrth"><div class = "simpleheader">DWH</div></th>	 
 	 <th class="pdrth"><div class = "simpleheader">PdrType</div></th>
 	 <th class="pdrth"><div class = "simpleheader">PdrString1</div></th>
 	 <th class="pdrth"><div class = "simpleheader">PdrString2</div></th>
@@ -63,7 +61,6 @@
 	 <th class="pdrth"><div class = "simpleheader">PdrString38</div></th>
 	 <th class="pdrth"><div class = "simpleheader">PdrString39</div></th>
 	 <th class="pdrth"><div class = "simpleheader">PdrString40</div></th>
-	 <th class="pdrth"><div class = "simpleheader">Notes</div></th>
 	</tr>
 </thead>
 <tbody>
@@ -76,6 +73,7 @@
 	<td><%= pdr_log.action %></td>
 	<td style="white-space:nowrap;"><%= pdr_log.created_at.to_formatted_s(:db) %></td>
 	<td><%= pdr_log.username %></td>
+	<td><%= pdr_log.notes %></td>
 	<td><%= pdr_log.name %></td>
 	<td><%= pdr_log.description %></td>
     <td><%= pdr_log.crm_flag=="1" ? "SI" : "NO" %> </td>
@@ -121,7 +119,7 @@
 	<td><%= pdr_log.pdrstring38 %></td>
 	<td><%= pdr_log.pdrstring39 %></td>
 	<td><%= pdr_log.pdrstring40 %></td>
-	<td><%= pdr_log.notes %></td>
+	
 	</tr>
 	<% end %>
 </tbody>

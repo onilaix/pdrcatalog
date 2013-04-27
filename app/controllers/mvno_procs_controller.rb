@@ -1,9 +1,9 @@
 class MvnoProcsController < ApplicationController
   unloadable
   before_filter :find_project, :authorize
+
   def index
-    
-    
+
     @project = Project.find(params[:project_id])
     @mvno_proc_list = MvnoProc.order("pdrtype")
   end
@@ -16,7 +16,7 @@ class MvnoProcsController < ApplicationController
     @mvno_proc = MvnoProc.new(params[:mvno_proc])
     if @mvno_proc.save
       flash[:notice] = "Il processo e' stato creato."
-      redirect_to(mvno_procs_url(:project_id =>  session[:project_id])) 
+      redirect_to(mvno_procs_url(:project_id =>  session[:project_id]))
     else
       flash[:alert] = "Il processo non e' stato creato"
       render :action => "new"
@@ -65,10 +65,10 @@ class MvnoProcsController < ApplicationController
     end
   end
 
-private
+  private
 
   def find_project
-    session[:project_id] ||= params[:project_id] 
+    session[:project_id] ||= params[:project_id]
     @project = Project.find(session[:project_id])
   end
 

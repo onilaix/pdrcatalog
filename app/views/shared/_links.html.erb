@@ -1,13 +1,26 @@
+<h3>
+	<%= "Catalogo PDR/" + if params[:controller] == "pdrs"        then "Elenco PDR"    
+	 elsif  params[:controller] == "mvno_procs" then "Elenco Processi" 
+	 elsif  params[:controller] == "dwh"        then "Elenco PDR per DWH" 
+	 elsif  params[:controller] == "log"        then "Storico Modifiche"
+	 else "" 
+	 end %>
+</h3>	 
+
+
+
 <div>
 	<%= if params[:controller] == "pdrs"        then "Elenco PDR"      else link_to 'Elenco PDR', pdrs_path(:project_id => session[:project_id])           end %>
 	| <%= if params[:controller] == "mvno_procs" then "Elenco Processi" else link_to 'Elenco Processi', mvno_procs_path(:project_id => session[:project_id]) end %>
 	| <%= if params[:controller] == "dwh"        then "DWH"             else link_to 'DWH', dwh_path(:project_id => session[:project_id])                    end %>
 	| <%= if params[:controller] == "log"        then "Storico"         else link_to 'Storico', log_path(:project_id => session[:project_id])                end %>
+
+
+
 </div>
 <p></p>
-
 <div>
-	<% if params[:controller] != "mvno_procs" %>
+	 	<% if params[:controller] != "mvno_procs" %>
     	<%= form_tag({:controller => params[:controller], :action => "search"}, :method => "get") do %>
 	       <%= label_tag(:filter, "Filtro per PdrType:") %>
 	       <%= select_tag(:filter, options_from_collection_for_select(MvnoProc.order("pdrtype ASC"), :id, :option_text, params[:filter]),{:prompt => 'Seleziona un PdrType'}) %>
@@ -16,3 +29,4 @@
 	    <% end %>
 	<% end %>
 </div>
+<p></p>

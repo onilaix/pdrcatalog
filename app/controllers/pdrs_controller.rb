@@ -61,7 +61,7 @@ class PdrsController < ApplicationController
   end
 
   def search
-    logger.debug "INPUT FILTER IS #{params[:filter]}"
+   logger.debug "INPUT FILTER FOR CONTROLLER  #{params[:controller]} IS #{params[:filter]}"
  
     if params[:commit] == "Reset" or params[:filter] == ""
       set_pdr_list("all")

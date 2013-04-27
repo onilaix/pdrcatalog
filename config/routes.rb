@@ -29,8 +29,14 @@ resources :pdrs do
   # get 'dwh', :on => :collection
 end
 
-resources :dwh
-resources :log
+resources :dwh do
+   get 'search', :on => :collection
+end
+
+
+resources :log do
+   get 'search', :on => :collection
+end
 
 
 
