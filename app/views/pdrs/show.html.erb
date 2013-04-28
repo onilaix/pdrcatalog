@@ -1,7 +1,4 @@
 
-<%
-ret_codes_list = @pdr.get_ret_codes_list
-%>
 
 <p>
 
@@ -34,7 +31,7 @@ ret_codes_list = @pdr.get_ret_codes_list
 <p><%= f.label :pdrstring4 %>  <%= @pdr.pdrstring4 %></p>   
 <p><%= f.label :pdrstring5 %>  <%= @pdr.pdrstring5 %></p>   
 <p><%= f.label :pdrstring6 %>  <%= @pdr.pdrstring6 %></p>   
-<p><%= f.label :pdrstring7 %>  <%= ret_codes_list == '' ? "(--no ret code defined --)" : simple_format(ret_codes_list) %>
+<p><%= f.label :pdrstring7 %>  <%= @pdr.pdrstring7  == '' ? "(--no ret code defined --)" : simple_format(@pdr.pdrstring7) %>
 <p><label>&nbsp;</label>	<%= link_to('Dettagli/Modifica',pdr_ret_codes_path(@pdr, :project_id =>  session[:project_id])) %></p>   
 <p><%= f.label :pdrstring8 %>  <%= @pdr.pdrstring8 %> </p>   
 <p><%= f.label :pdrstring9 %>  <%= @pdr.pdrstring9 %> </p>   

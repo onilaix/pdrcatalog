@@ -16,8 +16,12 @@ class RetCodesController < ApplicationController
     @ret_code = @pdr.ret_codes.build(params[:ret_code])
     @ret_code.code = params[:ret_code][:code] !='' ? params[:ret_code][:code] :  params[:code_sel]
     if @ret_code.save
-      Utils.trace_pdr("NEW RET_CODE", @pdr)
+      Utils.trace_pdr("NEW RET_CODE", @pdr)  # trace pdr in log table
+      # copying new code in corresponding pdr, field pdrstring7
+      @pdr.pdrstring7 = @pdr.get_ret_codes_list
+      @pdr.save
       flash[:notice] = "Nuovo Return Code creato!"
+
       redirect_to pdr_ret_codes_url(@pdr)
     #   redirect_to [@mvno_proc, @pdr]
     else
@@ -35,7 +39,11 @@ class RetCodesController < ApplicationController
     form_params = params[:ret_code]
     form_params[:code] = params[:ret_code][:code ]!='' ? params[:ret_code][:code] :  params[:code_sel]
     if @ret_code.update_attributes(form_params)
-      Utils.trace_pdr("UPDATE RET_CODE", @pdr)
+      Utils.trace_pdr("UPDATE RET_CODE", @pdr)  # trace pdr in log table
+      # copying new code in corresponding pdr, field pdrstring7
+      @pdr.pdrstring7 = @pdr.get_ret_codes_list
+      @pdr.save
+
       flash[:notice] = "Return Code  aggiornato"
       redirect_to( pdr_ret_codes_url(@pdr))
     else
@@ -47,6 +55,9 @@ class RetCodesController < ApplicationController
   def destroy
     @ret_code.destroy
     Utils.trace_pdr("DELETE", @pdr)
+     # copying new code in corresponding pdr, field pdrstring7
+      @pdr.pdrstring7 = @pdr.get_ret_codes_list
+      @pdr.save    
 #    respond_to do |format|
       flash[:notice] = "Codice di ritorno eliminato"
       #redirect_to( pdr_ret_codes_url(@pdr, :project_id =>  session[:project_id]))

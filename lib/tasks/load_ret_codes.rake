@@ -40,9 +40,17 @@ namespace :db do
           #  printf "%s",  " #{key} (skipped), "
           end
         end
-
+        
+        # patch to handle unset "code" in input file
+        ret_code.code = ret_code.code || "NOT SET" 
           if ret_code.save
             printf "%s" , ": ret_code #{ret_code.code} created."
+
+            pdr = ret_code.pdr
+            pdr.pdrstring7 = pdr.get_ret_codes_list
+            pdr.save 
+            printf "%s" , "(pdr updated)"
+
           else
             printf "%s", "  ---- error saving ret_code!"
             ret_code.errors.each{|e| p e}

@@ -7,7 +7,7 @@ class Pdr < ActiveRecord::Base
   def get_ret_codes_list
     # returns ordered list of return codes, separated by newlines
     ret_codes_list = ''
-    self.ret_codes.order("code").each {|rc| ret_codes_list << "\n" << rc.code}
+    self.ret_codes.order("code").each {|rc| ret_codes_list << rc.code << "\n" }
     return ret_codes_list
   end
 
