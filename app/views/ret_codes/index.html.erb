@@ -1,38 +1,40 @@
 <h3>Codici di Ritorno PDR: <%= @pdr.get_pdr_key %></h3>
 
-
 <% if  @pdr.ret_codes(true).size == 0 %>
 <h4> Nessun Codice di Ritorno definito</h4>
 <% else %>
 <table class="list" style="width:auto; border-collapse: separate; border-spacing:2px; border-color:grey;" >
-<tr class="pdrth">
-  <th>Codice Errore</th>
-  <th>Descrizione</th>
-  <th>Descrizione CM</th>
-  <th>Campi aggiuntivi da visualizzare su CRM</th>
-  <th>Commento</th>
-  <th colspan="2">&nbsp;</th>
-</tr>
-<% counter = 0
-   @pdr.ret_codes.find_all do |rc|
-     counter +=1
- %>
-<tr class="<%= (counter % 2) == 0 ? "even" : "odd"%>">
-  <td><%= rc.code %></td>
-  <td><%= simple_format(rc.description) %></td>
-  <td><%= rc.cm_description %></td>
-  <td><%= rc.crm_fields %></td>
-  <td><%= rc.comment %></td>
-  <td><%= link_to( 'Modifica', edit_pdr_ret_code_path(@pdr, rc)) %> </td>
-  <td><%= link_to( 'Rimuovi', [@pdr, rc], :confirm => 'Sei sicuro?', :method => :delete ) %></td>
-</tr>
-<% end # loop %>
+	<tr class="pdrth">
+		<th colspan="2">&nbsp;</th>
+		<th>Codice Errore</th>
+		<th>Descrizione</th>
+		<th>Descrizione CM</th>
+		<th>Campi aggiuntivi da visualizzare su CRM</th>
+		<th>Commento</th>
+		<th colspan="2">&nbsp;</th>
+	</tr>
+	<% counter = 0
+	@pdr.ret_codes.find_all do |rc|
+	counter +=1
+	%>
+	<tr class="<%= (counter % 2) == 0 ? "even" : "odd"%>">
+		<td><%= link_to( image_tag("edit.png", :alt =>  "modifica"), edit_pdr_ret_code_path(@pdr, rc)) %> </td>
+		<td><%= link_to( image_tag("delete.png", :alt =>  "rimuovi"), [@pdr, rc], :confirm => 'Sei sicuro?', :method => :delete ) %></td>
+		<td><%= rc.code %></td>
+		<td><%= simple_format(rc.description) %></td>
+		<td><%= rc.cm_description %></td>
+		<td><%= rc.crm_fields %></td>
+		<td><%= rc.comment %></td>
+		<td><%= link_to( image_tag("edit.png", :alt =>  "modifica"), edit_pdr_ret_code_path(@pdr, rc)) %> </td>
+		<td><%= link_to( image_tag("delete.png", :alt =>  "rimuovi"), [@pdr, rc], :confirm => 'Sei sicuro?', :method => :delete ) %></td>
+	</tr>
+	<% end # loop %>
 </table>
 
 <% end %>
 
 <p>
-<%= link_to( 'Aggiungi Codice di Ritorno', new_pdr_ret_code_path(@pdr))  %>
+	<%= link_to( 'Aggiungi Codice di Ritorno', new_pdr_ret_code_path(@pdr))  %>
 </p>
 
 <br>
